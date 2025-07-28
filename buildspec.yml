@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      # Install any dependencies needed for your build.
+      # For this simple Python script, we don't need much.
+      - echo "Installing dependencies..."
+      - # For a real Python project, you might do: pip install -r requirements.txt
+  build:
+    commands:
+      # These are the actual build commands.
+      - echo "Starting build phase..."
+      - python hello.py
+  post_build:
+    commands:
+      # Commands to run after the build is complete.
+      - echo "Build completed successfully!"
+
+artifacts:
+  # Define what artifacts (output files) CodeBuild should save.
+  # In this case, we're not producing a deployable artifact,
+  # but you could specify a compiled binary or a zipped package.
+  files:
+    - '**/*' # This means include all files in the output artifact.
+  discard-paths: yes # Discard the source directory structure in the artifact.
